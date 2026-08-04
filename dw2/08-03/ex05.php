@@ -7,7 +7,7 @@
                 $membro = $_GET["membro"];
                 $convite = $_GET["convite"];
 
-                if(($idade >= 18) && ($membro == "S") && ($convite == "S")){
+                if(($idade >= 18) && (($membro == "S") || ($convite == "S"))){
                     echo "Entrada permitida.";
                 }
                 else{
