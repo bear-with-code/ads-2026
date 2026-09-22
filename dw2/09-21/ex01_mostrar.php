@@ -35,27 +35,29 @@
     </style>
 </head>
 <body>
-
-    
-        <div class="container">
-            <div class="header"><b>Leitor de Receitas</b></div>
-
-            <div style="text-align: right;">Nome:</div>
-            <div><input type="text" name="receitaNome"></div>
-
-            <div style="text-align: right;">Ingredientes:</div>
-            <div><textarea class="caixaTexto" name="receitaIngredientes" rows="5" cols="30"></textarea></div>
-
-            <div style="text-align: right;">Modo de Preparo:</div>
-            <div><textarea class="caixaTexto" name="receitaModo" rows="5" cols="30"></textarea></div>
-
-            <div style="text-align: right;">Foto:</div>
-            <div><input type="file" id="receitaFoto" name="receitaFoto"></div>
+    <div class="container">
+        <div class="header"><b>Leitor de Receitas</b></div>
+        <div style="grid-column: 1 / span 2;">
+            <?php
+                $file = fopen("receitas.md", "r+");
+                echo "<textarea readonly class=\"caixaTexto\" rows=\"5\" cols=\"30\">";
+                echo fread($file, filesize("receitas.md"));
+                echo "</textarea>";
+                fclose($file);
+            ?>
         </div>
 
-        <br>
-        
-    
-    
+        <div style="text-align: right;">Foto:</div>
+        <div>
+            <?php
+                echo "<img src=\"" . $_POST["receitaFoto"] . "\" width=\"300\" height=\"150\">";
+            ?>
+        </div>
+    </div>
+
+    <br>
+    <form action="ex01.html">
+        <button type="submit">Voltar</button>
+    </form>
 </body>
 </html>
