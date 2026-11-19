@@ -1,3 +1,11 @@
+<?php
+    $texto = "";
+    if(isset($_COOKIE["return"])){
+        $texto = "<br>* " . $_COOKIE["return"];
+        setcookie("return", "", time() - 10);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,6 +19,7 @@
         <label>Nome: <input type="text" name="lname"></label><br>
         <label>Senha: <input type="password" name="lpass"></label><br>
         <input type="submit" value="Login"> <input type="submit" formaction="cadastro.php" value="Cadastrar">
+        <span class="error"><?php echo $texto;?></span>
     </form>
 </body>
 </html>
